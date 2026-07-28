@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     "brand development",
     "Sri Lanka",
   ],
+  verification: {
+    google: "KUL4_VMtrIrdifIuUSKOZpdKwfXX9jTMXmXpX9cEjwE",
+  },
   openGraph: {
     title: "Chamidu Deshan | Digital Marketer",
     description:
