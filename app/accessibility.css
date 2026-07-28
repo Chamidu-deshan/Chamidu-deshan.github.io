@@ -1,0 +1,47 @@
+/* Accessible light-theme text tones derived from the supplied palette. */
+:root:not([data-theme="dark"]) {
+  --blue: #3f6078;
+  --muted: #50616f;
+}
+
+:root:not([data-theme="dark"]) .theme-toggle span,
+:root:not([data-theme="dark"]) .mobile-menu nav a span,
+:root:not([data-theme="dark"]) .name-link::after {
+  color: #6b5325;
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (max-width: 780px) {
+  .name-link::after {
+    content: "CHAMIDU · MENU";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-wrap {
+    --portrait-x: 0px !important;
+    --portrait-y: 0px !important;
+    --portrait-rx: 0deg !important;
+    --portrait-ry: 0deg !important;
+  }
+
+  .portrait-card {
+    transform: none !important;
+  }
+}
+
+@supports (content-visibility: auto) {
+  .about,
+  .portfolio,
+  .work,
+  .closing-statement,
+  .contact,
+  .site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+}

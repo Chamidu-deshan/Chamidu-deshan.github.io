@@ -1,0 +1,49 @@
+.motion-control {
+  position: fixed;
+  z-index: 95;
+  bottom: 20px;
+  left: 20px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-solid);
+  box-shadow: 0 10px 30px var(--shadow);
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  transition:
+    transform 180ms ease,
+    background-color 350ms ease;
+}
+
+.motion-control:hover,
+.motion-control:focus-visible {
+  transform: translateY(-2px);
+}
+
+:root[data-motion="paused"] .statement-track,
+:root[data-motion="paused"] .brand-track,
+:root[data-motion="paused"] .portrait-orbit,
+:root[data-motion="paused"] .portrait-stamp,
+:root[data-motion="paused"] .tool-chip,
+:root[data-motion="paused"] .tool-glow {
+  animation-play-state: paused !important;
+}
+
+@media (max-width: 780px) {
+  .motion-control {
+    bottom: 70px;
+    left: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-control {
+    display: none;
+  }
+}
