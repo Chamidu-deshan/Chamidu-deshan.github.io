@@ -21,11 +21,11 @@ type WorkItem = {
 };
 
 const navigation = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Inside the Work", href: "#work" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", mobileLabel: "Home", href: "#home" },
+  { label: "About", mobileLabel: "About", href: "#about" },
+  { label: "Portfolio", mobileLabel: "Portfolio", href: "#portfolio" },
+  { label: "Inside the Work", mobileLabel: "Work", href: "#work" },
+  { label: "Contact", mobileLabel: "Contact", href: "#contact" },
 ];
 
 const brands = [
@@ -327,7 +327,7 @@ export function PortfolioSite() {
               }}
             >
               <span>0{index + 1}</span>
-              {item.label}
+              {item.mobileLabel}
             </a>
           ))}
         </nav>
