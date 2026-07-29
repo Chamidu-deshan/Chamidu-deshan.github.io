@@ -36,9 +36,21 @@ const navigation = [
 ];
 
 const brands: Brand[] = [
-  { name: "Fadna", image: "/assets/fadna.png" },
-  { name: "Fadna Life Science", image: "/assets/fadna-life-science.png" },
-  { name: "QofL", image: "/assets/qofl.png" },
+  {
+    name: "Fadna",
+    image: "/assets/fadna.png",
+    logoClass: "brand-logo brand-logo-fadna",
+  },
+  {
+    name: "Fadna Life Science",
+    image: "/assets/fadna-life-science.png",
+    logoClass: "brand-logo brand-logo-fadna-life-science",
+  },
+  {
+    name: "QofL",
+    image: "/assets/qofl.png",
+    logoClass: "brand-logo brand-logo-qofl",
+  },
   { name: "SATINY", wordmark: "SATINY" },
   {
     name: "Crepe Runner",
@@ -47,7 +59,7 @@ const brands: Brand[] = [
   },
   {
     name: "Hype Bam",
-    image: "/assets/hype-bam.png",
+    image: "/assets/hype-bam-original.png",
     logoClass: "brand-logo brand-logo-hype-bam",
   },
   {
