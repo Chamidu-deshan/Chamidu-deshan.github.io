@@ -13,7 +13,7 @@
 }
 
 .hero h1 {
-  letter-spacing: -0.03em;
+  letter-spacing: 0.008em;
 }
 
 .section-heading h2,
@@ -21,7 +21,7 @@
 .work-header h2,
 .contact h2,
 .footer-intro h2 {
-  letter-spacing: -0.025em;
+  letter-spacing: 0.008em;
 }
 
 @media (min-width: 1261px) {
@@ -510,16 +510,7 @@
   object-fit: contain;
 }
 
-.brand-card img.brand-logo-crepe-runner {
-  padding: 2px 4px;
-}
-
-.brand-card img.brand-logo-hype-bam {
-  padding: 5px 8px;
-}
-
 .brand-card img.brand-logo-seixed {
-  padding: 8px 10px;
   background: #050505;
 }
 
@@ -533,6 +524,12 @@
 }
 
 @media (max-width: 780px) {
+  .section-shell,
+  .site-footer > .section-shell {
+    width: calc(100% - 40px);
+    margin-inline: auto;
+  }
+
   .hero.section-shell {
     width: 100%;
     max-width: none;
@@ -552,9 +549,9 @@
   }
 
   .hero h1 {
-    font-size: clamp(2.9rem, 12.7vw, 4.75rem);
-    letter-spacing: -0.035em;
-    line-height: 0.87;
+    font-size: clamp(2.65rem, 12.4vw, 4.5rem);
+    letter-spacing: 0.008em;
+    line-height: 0.88;
   }
 
   .hero h1 > span {
@@ -598,11 +595,6 @@
   .contact h2 {
     font-size: clamp(2.85rem, 12.5vw, 4.5rem);
     line-height: 0.9;
-  }
-
-  .site-footer > .section-shell {
-    width: calc(100% - 40px);
-    margin-inline: auto;
   }
 
   .brand-card img.brand-logo {
