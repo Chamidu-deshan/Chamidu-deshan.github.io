@@ -4,6 +4,7 @@ import "./portfolio-extra.css";
 import "./mobile-reference.css";
 import "./accessibility.css";
 import "./motion-control.css";
+import "./header-reference.css";
 
 export const metadata: Metadata = {
   title: "Chamidu Deshan | Digital Marketer",
