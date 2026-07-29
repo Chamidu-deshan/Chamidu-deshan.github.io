@@ -342,10 +342,6 @@
     height: 42px;
   }
 
-  .motion-control {
-    bottom: calc(72px + env(safe-area-inset-bottom));
-  }
-
   .mobile-menu {
     overflow-y: auto;
     padding:

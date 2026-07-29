@@ -1,5 +1,4 @@
 import { AccessibilityEnhancements } from "./AccessibilityEnhancements";
-import { MotionControl } from "./MotionControl";
 import { PortfolioSite } from "./PortfolioSite";
 
 export default function Home() {
@@ -7,7 +6,6 @@ export default function Home() {
     <>
       <PortfolioSite />
       <AccessibilityEnhancements />
-      <MotionControl />
     </>
   );
 }
