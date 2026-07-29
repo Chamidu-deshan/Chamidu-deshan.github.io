@@ -444,7 +444,7 @@
   content: "";
   background: rgba(4, 10, 16, 0.52);
   filter: blur(11px);
-  transform: rotate(calc(var(--tool-rotate) * -1));
+  transform: rotate(var(--tool-rotate));
 }
 
 .platform-logo img {
