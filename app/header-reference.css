@@ -526,7 +526,7 @@
 @media (min-width: 1261px) {
   .section-shell,
   .site-footer > .section-shell {
-    width: min(calc(100% - 96px), 1520px);
+    width: min(calc(100% - clamp(40px, 4vw, 72px)), 1520px);
     margin-inline: auto;
     padding-inline: 0;
   }
