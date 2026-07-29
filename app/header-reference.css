@@ -12,13 +12,16 @@
   --nav-tab-tracking: 0.18em;
 }
 
-.hero h1,
+.hero h1 {
+  letter-spacing: -0.03em;
+}
+
 .section-heading h2,
 .portfolio-heading h2,
 .work-header h2,
 .contact h2,
 .footer-intro h2 {
-  letter-spacing: 0.015em;
+  letter-spacing: -0.025em;
 }
 
 @media (min-width: 1261px) {
@@ -489,6 +492,122 @@
   .mobile-menu nav a {
     min-block-size: 36px;
     font-size: 0.82rem;
+  }
+}
+
+
+/* Final responsive layout refinements: the navigation stays over the page
+   while every content shell keeps the same balanced outer edges. */
+.brand-card {
+  overflow: hidden;
+}
+
+.brand-card img.brand-logo {
+  width: 160px;
+  max-width: 100%;
+  height: 64px;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.brand-card img.brand-logo-crepe-runner {
+  padding: 2px 4px;
+}
+
+.brand-card img.brand-logo-hype-bam {
+  padding: 5px 8px;
+}
+
+.brand-card img.brand-logo-seixed {
+  padding: 8px 10px;
+  background: #050505;
+}
+
+@media (min-width: 1261px) {
+  .section-shell,
+  .site-footer > .section-shell {
+    width: min(calc(100% - 96px), 1520px);
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
+
+@media (max-width: 780px) {
+  .hero.section-shell {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding: clamp(96px, 24vw, 116px) 20px 92px;
+  }
+
+  .hero,
+  .hero-copy,
+  .hero h1 {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hero {
+    gap: clamp(48px, 12vw, 64px);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.9rem, 12.7vw, 4.75rem);
+    letter-spacing: -0.035em;
+    line-height: 0.87;
+  }
+
+  .hero h1 > span {
+    max-width: 100%;
+    text-wrap: balance;
+  }
+
+  .hero h1 .accent-line {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .hero-intro {
+    max-width: none;
+    margin-top: 26px;
+  }
+
+  .hero-actions {
+    width: 100%;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .hero-portrait-wrap {
+    width: min(100%, 520px);
+  }
+
+  .hero-bottom {
+    right: 20px;
+    left: 20px;
+  }
+
+  .portfolio-heading h2,
+  .section-heading h2,
+  .work-header h2,
+  .contact h2 {
+    font-size: clamp(2.85rem, 12.5vw, 4.5rem);
+    line-height: 0.9;
+  }
+
+  .site-footer > .section-shell {
+    width: calc(100% - 40px);
+    margin-inline: auto;
+  }
+
+  .brand-card img.brand-logo {
+    width: 132px;
+    height: 52px;
   }
 }
 
