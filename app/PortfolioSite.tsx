@@ -96,6 +96,7 @@ const filters: { label: string; value: WorkCategory }[] = [
 export function PortfolioSite() {
   const [theme, setTheme] = useState<Theme>("light");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState(navigation[0].href);
   const [filter, setFilter] = useState<WorkCategory>("all");
   const [selectedWork, setSelectedWork] = useState<WorkItem | null>(null);
 
@@ -169,6 +170,60 @@ export function PortfolioSite() {
     };
   }, []);
 
+  useEffect(() => {
+    const sections = navigation
+      .map((item) => document.querySelector<HTMLElement>(item.href))
+      .filter((section): section is HTMLElement => Boolean(section));
+
+    let animationFrame = 0;
+
+    const updateActiveSection = () => {
+      const atDocumentEnd =
+        document.documentElement.scrollHeight -
+          (window.scrollY + window.innerHeight) <=
+        4;
+
+      if (atDocumentEnd) {
+        setActiveSection("#contact");
+        return;
+      }
+
+      const marker = window.scrollY + window.innerHeight * 0.35;
+      let currentSection = navigation[0].href;
+
+      sections.forEach((section) => {
+        if (section.offsetTop <= marker) {
+          currentSection = `#${section.id}`;
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    const scheduleUpdate = () => {
+      if (animationFrame) {
+        return;
+      }
+
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        updateActiveSection();
+      });
+    };
+
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+    updateActiveSection();
+
+    return () => {
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+      if (animationFrame) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, []);
+
   const toggleTheme = () => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
   };
@@ -204,7 +259,15 @@ export function PortfolioSite() {
 
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map((item) => (
-            <a key={item.href} href={item.href}>
+            <a
+              key={item.href}
+              href={item.href}
+              className={activeSection === item.href ? "is-active" : undefined}
+              aria-current={
+                activeSection === item.href ? "location" : undefined
+              }
+              onClick={() => setActiveSection(item.href)}
+            >
               {item.label}
             </a>
           ))}
@@ -226,6 +289,7 @@ export function PortfolioSite() {
             onClick={() => setMenuOpen(true)}
             aria-label="Open navigation menu"
             aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             <span />
             <span />
@@ -234,6 +298,7 @@ export function PortfolioSite() {
       </header>
 
       <div
+        id="mobile-navigation"
         className={`mobile-menu ${menuOpen ? "is-open" : ""}`}
         aria-hidden={!menuOpen}
       >
@@ -252,7 +317,14 @@ export function PortfolioSite() {
             <a
               key={item.href}
               href={item.href}
-              onClick={() => setMenuOpen(false)}
+              className={activeSection === item.href ? "is-active" : undefined}
+              aria-current={
+                activeSection === item.href ? "location" : undefined
+              }
+              onClick={() => {
+                setActiveSection(item.href);
+                setMenuOpen(false);
+              }}
             >
               <span>0{index + 1}</span>
               {item.label}
