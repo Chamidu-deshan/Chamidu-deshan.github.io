@@ -106,14 +106,158 @@ const workItems: WorkItem[] = [
 ];
 
 const tools = [
-  { name: "Shopify", icon: "/assets/shopify.svg" },
-  { name: "WordPress", icon: "/assets/wordpress.svg" },
-  { name: "Meta", icon: "/assets/meta.svg" },
-  { name: "Instagram", icon: "/assets/instagram.svg" },
-  { name: "Facebook", icon: "/assets/facebook.svg" },
-  { name: "Asana", icon: "/assets/asana.svg" },
-  { name: "Notion", icon: "/assets/notion.svg" },
-  { name: "Google Analytics", icon: "/assets/googleanalytics.svg" },
+  {
+    name: "Facebook",
+    icon: "/assets/facebook.svg",
+    tone: "facebook",
+    style: {
+      "--tool-x": "14%",
+      "--tool-y": "25%",
+      "--tool-size": "82px",
+      "--tool-rotate": "-12deg",
+      "--tool-z": "50px",
+      "--delay": "-0.4s",
+      "--mobile-x": "15%",
+      "--mobile-y": "29%",
+      "--mobile-size": "50px",
+    } as CSSProperties,
+  },
+  {
+    name: "ChatGPT",
+    icon: "/assets/chatgpt.svg",
+    tone: "chatgpt",
+    style: {
+      "--tool-x": "30%",
+      "--tool-y": "13%",
+      "--tool-size": "72px",
+      "--tool-rotate": "9deg",
+      "--tool-z": "22px",
+      "--delay": "-1.7s",
+      "--mobile-x": "27%",
+      "--mobile-y": "15%",
+      "--mobile-size": "47px",
+    } as CSSProperties,
+  },
+  {
+    name: "Instagram",
+    icon: "/assets/instagram.svg",
+    tone: "instagram",
+    style: {
+      "--tool-x": "22%",
+      "--tool-y": "49%",
+      "--tool-size": "86px",
+      "--tool-rotate": "8deg",
+      "--tool-z": "76px",
+      "--delay": "-2.8s",
+      "--mobile-x": "15%",
+      "--mobile-y": "54%",
+      "--mobile-size": "55px",
+    } as CSSProperties,
+  },
+  {
+    name: "Asana",
+    icon: "/assets/asana.svg",
+    tone: "asana",
+    mobileHidden: true,
+    style: {
+      "--tool-x": "10%",
+      "--tool-y": "70%",
+      "--tool-size": "68px",
+      "--tool-rotate": "13deg",
+      "--tool-z": "12px",
+      "--delay": "-3.6s",
+    } as CSSProperties,
+  },
+  {
+    name: "Google Analytics",
+    icon: "/assets/googleanalytics.svg",
+    tone: "analytics",
+    mobileHidden: true,
+    style: {
+      "--tool-x": "31%",
+      "--tool-y": "79%",
+      "--tool-size": "76px",
+      "--tool-rotate": "-8deg",
+      "--tool-z": "42px",
+      "--delay": "-1.1s",
+    } as CSSProperties,
+  },
+  {
+    name: "Claude",
+    icon: "/assets/claude.svg",
+    tone: "claude",
+    style: {
+      "--tool-x": "70%",
+      "--tool-y": "14%",
+      "--tool-size": "76px",
+      "--tool-rotate": "-8deg",
+      "--tool-z": "30px",
+      "--delay": "-2.2s",
+      "--mobile-x": "73%",
+      "--mobile-y": "17%",
+      "--mobile-size": "48px",
+    } as CSSProperties,
+  },
+  {
+    name: "Meta",
+    icon: "/assets/meta.svg",
+    tone: "meta",
+    style: {
+      "--tool-x": "87%",
+      "--tool-y": "26%",
+      "--tool-size": "92px",
+      "--tool-rotate": "12deg",
+      "--tool-z": "68px",
+      "--delay": "-0.8s",
+      "--mobile-x": "84%",
+      "--mobile-y": "31%",
+      "--mobile-size": "59px",
+    } as CSSProperties,
+  },
+  {
+    name: "Shopify",
+    icon: "/assets/shopify.svg",
+    tone: "shopify",
+    style: {
+      "--tool-x": "79%",
+      "--tool-y": "51%",
+      "--tool-size": "82px",
+      "--tool-rotate": "-10deg",
+      "--tool-z": "50px",
+      "--delay": "-3.2s",
+      "--mobile-x": "85%",
+      "--mobile-y": "57%",
+      "--mobile-size": "52px",
+    } as CSSProperties,
+  },
+  {
+    name: "WordPress",
+    icon: "/assets/wordpress.svg",
+    tone: "wordpress",
+    mobileHidden: true,
+    style: {
+      "--tool-x": "91%",
+      "--tool-y": "70%",
+      "--tool-size": "70px",
+      "--tool-rotate": "9deg",
+      "--tool-z": "16px",
+      "--delay": "-1.5s",
+    } as CSSProperties,
+  },
+  {
+    name: "Notion",
+    icon: "/assets/notion.svg",
+    tone: "notion",
+    mobileHidden: true,
+    style: {
+      "--tool-x": "70%",
+      "--tool-y": "80%",
+      "--tool-size": "70px",
+      "--tool-rotate": "-12deg",
+      "--tool-z": "35px",
+      "--delay": "-2.5s",
+    } as CSSProperties,
+  },
 ];
 
 const filters: { label: string; value: WorkCategory }[] = [
@@ -684,21 +828,59 @@ export function PortfolioSite() {
             </div>
 
             <div
-              className="tool-field"
-              aria-label="Marketing and collaboration tools"
+              className="footer-scene reveal"
+              aria-label="Chamidu surrounded by marketing and creative platforms"
+              onPointerMove={(event) => {
+                if (
+                  window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ) {
+                  return;
+                }
+                const bounds = event.currentTarget.getBoundingClientRect();
+                const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+                const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+                event.currentTarget.style.setProperty(
+                  "--parallax-x",
+                  `${x * 18}px`,
+                );
+                event.currentTarget.style.setProperty(
+                  "--parallax-y",
+                  `${y * 12}px`,
+                );
+              }}
+              onPointerLeave={(event) => {
+                event.currentTarget.style.setProperty("--parallax-x", "0px");
+                event.currentTarget.style.setProperty("--parallax-y", "0px");
+              }}
             >
-              <div className="tool-glow tool-glow-one" aria-hidden="true" />
-              <div className="tool-glow tool-glow-two" aria-hidden="true" />
-              {tools.map((tool, index) => (
-                <div
-                  className="tool-chip"
-                  key={tool.name}
-                  style={{ "--delay": `${index * -0.45}s` } as CSSProperties}
-                >
-                  <img src={tool.icon} alt="" />
-                  <span>{tool.name}</span>
-                </div>
-              ))}
+              <div className="footer-scene-grid" aria-hidden="true" />
+              <div className="footer-scene-glow footer-scene-glow-left" aria-hidden="true" />
+              <div className="footer-scene-glow footer-scene-glow-right" aria-hidden="true" />
+              <div className="footer-orbit footer-orbit-one" aria-hidden="true" />
+              <div className="footer-orbit footer-orbit-two" aria-hidden="true" />
+
+              <div className="footer-platforms" aria-hidden="true">
+                {tools.map((tool) => (
+                  <span
+                    className={`platform-logo platform-${tool.tone}${
+                      tool.mobileHidden ? " is-mobile-hidden" : ""
+                    }`}
+                    key={tool.name}
+                    style={tool.style}
+                  >
+                    <img src={tool.icon} alt="" />
+                  </span>
+                ))}
+              </div>
+
+              <div className="footer-portrait-stage">
+                <div className="footer-portrait-halo" aria-hidden="true" />
+                <img
+                  className="footer-portrait"
+                  src="/assets/footer-portrait-original.png"
+                  alt="Chamidu Deshan wearing glasses and headphones"
+                />
+              </div>
             </div>
 
             <div className="footer-bottom">
