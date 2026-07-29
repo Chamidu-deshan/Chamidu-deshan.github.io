@@ -20,6 +20,13 @@ type WorkItem = {
   note: string;
 };
 
+type Brand = {
+  name: string;
+  image?: string;
+  wordmark?: string;
+  logoClass?: string;
+};
+
 const navigation = [
   { label: "Home", mobileLabel: "Home", href: "#home" },
   { label: "About", mobileLabel: "About", href: "#about" },
@@ -28,14 +35,26 @@ const navigation = [
   { label: "Contact", mobileLabel: "Contact", href: "#contact" },
 ];
 
-const brands = [
+const brands: Brand[] = [
   { name: "Fadna", image: "/assets/fadna.png" },
   { name: "Fadna Life Science", image: "/assets/fadna-life-science.png" },
   { name: "QofL", image: "/assets/qofl.png" },
   { name: "SATINY", wordmark: "SATINY" },
-  { name: "Crepe Runner", wordmark: "CREPE RUNNER" },
-  { name: "Hype Bam", wordmark: "HYPE BAM" },
-  { name: "Seixed", wordmark: "SEIXED" },
+  {
+    name: "Crepe Runner",
+    image: "/assets/crepe-runner.png",
+    logoClass: "brand-logo brand-logo-crepe-runner",
+  },
+  {
+    name: "Hype Bam",
+    image: "/assets/hype-bam.png",
+    logoClass: "brand-logo brand-logo-hype-bam",
+  },
+  {
+    name: "Seixed",
+    image: "/assets/seixed.png",
+    logoClass: "brand-logo brand-logo-seixed",
+  },
   { name: "KBC Original", wordmark: "KBC ORIGINAL" },
 ];
 
@@ -503,6 +522,7 @@ export function PortfolioSite() {
                     <div className="brand-card" key={`${group}-${brand.name}`}>
                       {brand.image ? (
                         <img
+                          className={brand.logoClass}
                           src={brand.image}
                           alt={group === 0 ? brand.name : ""}
                         />
